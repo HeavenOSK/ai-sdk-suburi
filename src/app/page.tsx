@@ -20,6 +20,14 @@ export default function Home() {
 							Use Chat - チャットインターフェースを試す
 						</a>
 					</li>
+					<li>
+						<a
+							href="/use-chat-tool"
+							className="text-primary underline hover:text-primary/80 transition-colors"
+						>
+							Use Chat Tool - チャットインターフェースを試す
+						</a>
+					</li>
 				</ul>
 			</main>
 		</div>
