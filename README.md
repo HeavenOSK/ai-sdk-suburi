@@ -1,3 +1,7 @@
+# AI SDK 素振りプロジェクト
+
+このプロジェクトは、AI SDK の技術的な素振りを行うためのものです。具体的な素振りの内容は現時点では未定です。
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
