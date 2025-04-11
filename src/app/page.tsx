@@ -28,6 +28,14 @@ export default function Home() {
 							Use Chat Tool - チャットインターフェースを試す
 						</a>
 					</li>
+					<li>
+						<a
+							href="/use-chat-search"
+							className="text-primary underline hover:text-primary/80 transition-colors"
+						>
+							Use Chat Search - チャットインターフェースを試す
+						</a>
+					</li>
 				</ul>
 			</main>
 		</div>
