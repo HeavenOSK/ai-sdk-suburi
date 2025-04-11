@@ -10,7 +10,7 @@ export default function UseChatSearchPage() {
 	} | null>(null);
 	const { messages, input, handleInputChange, handleSubmit, error, reload } =
 		useChat({
-			api: "/api/use-chat-search",
+			api: "/api/use-chat-scrape",
 			onToolCall: (toolCall) => {
 				console.log("toolCall", toolCall);
 				setLoadingTool({
