@@ -3,7 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { ChatContainer, ChatMessageList, ChatInput } from "@/components/chat";
 
-export default function UseChatPage() {
+export default function UseChatToolPage() {
 	const { messages, input, handleInputChange, handleSubmit, error, reload } =
 		useChat({
 			api: "/api/use-chat-tool",
