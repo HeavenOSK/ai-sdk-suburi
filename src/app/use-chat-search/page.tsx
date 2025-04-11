@@ -6,7 +6,7 @@ import { ChatContainer, ChatMessageList, ChatInput } from "@/components/chat";
 export default function UseChatSearchPage() {
 	const { messages, input, handleInputChange, handleSubmit, error, reload } =
 		useChat({
-			api: "/api/use-chat-tool",
+			api: "/api/use-chat-search",
 		});
 
 	return (
