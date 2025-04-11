@@ -1,15 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import {
-	ChatContainer,
-	ChatMessageList,
-	ChatInput
-} from "@/components/chat";
+import { ChatContainer, ChatMessageList, ChatInput } from "@/components/chat";
 
 export default function UseChatPage() {
 	const { messages, input, handleInputChange, handleSubmit, error, reload } =
-		useChat({});
+		useChat({ api: "/api/use-chat" });
 
 	return (
 		<ChatContainer
@@ -28,7 +24,7 @@ export default function UseChatPage() {
 				messages={messages.map((m) => ({
 					id: m.id,
 					role: m.role,
-					content: m.content
+					content: m.content,
 				}))}
 				error={error}
 				onRetry={reload}
