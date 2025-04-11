@@ -2,30 +2,38 @@
 
 import { useChat } from "@ai-sdk/react";
 import { ChatContainer, ChatMessageList, ChatInput } from "@/components/chat";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function UseChatSearchPage() {
-	const [loadingTool, setLoadingTool] = useState<{
+	const {
+		messages,
+		input,
+		handleInputChange,
+		handleSubmit,
+		error,
+		reload,
+		status,
+	} = useChat({
+		api: "/api/use-chat-scrape",
+	});
+
+	const loadingTool = useMemo<{
 		toolName: string;
-	} | null>(null);
-	const { messages, input, handleInputChange, handleSubmit, error, reload } =
-		useChat({
-			api: "/api/use-chat-scrape",
-			onToolCall: (toolCall) => {
-				console.log("toolCall", toolCall);
-				setLoadingTool({
-					toolName: toolCall.toolCall.toolName,
-				});
-			},
-			onResponse: (response) => {
-				console.log("response", response);
-				setLoadingTool(null);
-			},
-			onFinish: (message, options) => {
-				console.log("finish", message, options);
-				setLoadingTool(null);
-			},
-		});
+	} | null>(() => {
+		if (status !== "streaming" || messages.length === 0) {
+			return null;
+		}
+		const lastMessage = messages[messages.length - 1];
+		if (lastMessage.role !== "assistant") {
+			return null;
+		}
+		const lastPart = lastMessage.parts[lastMessage.parts.length - 1];
+		return lastPart.type === "tool-invocation"
+			? {
+					toolName: lastPart.toolInvocation.toolName,
+				}
+			: null;
+	}, [status, messages]);
 
 	return (
 		<ChatContainer
