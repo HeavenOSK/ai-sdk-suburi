@@ -1,0 +1,12 @@
+# package manager
+pnpm を使用する。
+
+# shadcn
+shadcn のコンポーネントを追加する前に、既に存在するかどうかを確認すること：
+1. `ls -la apps/web/src/components/ui/` を実行して既存のコンポーネントを確認
+2. 存在しない場合のみ `cd apps/web && npx shadcn@canary add ${COMPONENT_NAME}` を実行
+
+# ディレクトリ構造の方針
+- 複数の場所で使われる共通実装は src/lib や src/components/ui などの共通ディレクトリに配置する。
+- 特定の機能でのみ使用される実装は、その機能が使用される対象のディレクトリに凝集させる。
+- 例えば、app/ でのみ使用されるフックやサービスは app/hooks/ や app/db/ に配置する。
